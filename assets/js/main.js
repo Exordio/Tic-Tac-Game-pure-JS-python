@@ -6,11 +6,15 @@ const selectForm = document.querySelector(".select"),
 
     resultForm = document.querySelector(".result-form"),
     winText = document.querySelector(".winnertext"),
-    selectRestart = document.getElementById('restart');
+    selectRestart = document.getElementById('restart'),
+    mainMenu = document.getElementById('mainMenu');
 
 cells = document.getElementsByClassName('cell');
 
 player = "x";
+
+delayMSec = 1000;
+
 winIndex = [
     [1, 2, 3],
     [4, 5, 6],
@@ -29,10 +33,15 @@ window.onload = () => {
     }
 
     selectRestart.onclick = () => {
-        resultForm.setAttribute("class", "result-form");
-        restart()
+        resultForm.classList.remove("show");
+        restart();
         playWithfriend.classList.add("show");
-
+    }
+    
+    mainMenu.onclick = () => {
+        resultForm.setAttribute("class", "result-form");
+        restart();
+        selectForm.classList.remove("hide");
     }
 
 }
