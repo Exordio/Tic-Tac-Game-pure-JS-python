@@ -1,21 +1,12 @@
-/*var area = document.getElementById('area');
-var square = document.getElementsByClassName('square');
-/*
-for (var i = 1; i <= 9; i++){
-    if (i == 1) {
-        area.innerHTML += "<section>";
-        area.innerHTML += "<span class='square' pos=" + i + "></div>";
-    }
-    area.innerHTML += "<span class='square' pos=" + i + "></div>";
-    
-}*/
-
 const selectForm = document.querySelector(".select"),
-
     selectOnepc = selectForm.querySelector(".onepc"),
     selectWithbot = selectForm.querySelector(".withbot"),
-playWithfriend = document.querySelector(".playwithfriend"),
-players = document.querySelector(".players");
+    playWithfriend = document.querySelector(".playwithfriend"),
+    players = document.querySelector(".players"),
+
+    resultForm = document.querySelector(".result-form"),
+    winText = document.querySelector(".winnertext"),
+    selectRestart = document.getElementById('restart');
 
 cells = document.getElementsByClassName('cell');
 
@@ -36,10 +27,18 @@ window.onload = () => {
         selectForm.classList.add("hide");
         playWithfriend.classList.add("show");
     }
+
+    selectRestart.onclick = () => {
+        resultForm.setAttribute("class", "result-form");
+        restart()
+        playWithfriend.classList.add("show");
+
+    }
+
 }
 
 for (i = 0; i < cells.length; i++) {
-    cells[i].addEventListener('click', cellClick, false)
+    cells[i].addEventListener('click', cellClick, false);
 }
 
 
@@ -61,18 +60,34 @@ function cellClick() {
     console.log(data);
 
     if (checkWin(data)) {
-        alert("Выйграл : " + player);
+        playWithfriend.setAttribute("class", "playwithfriend");
+        resultForm.setAttribute("class", "result-form show");
+        winText.innerHTML = `Игрок <p>${player.toUpperCase()}</p> выйграл в игре`;
+
+    } else {
+        draw = true;
+        for (i in cells) {
+            if (cells[i].innerHTML == '') {
+                draw = false;
+            }
+        }
+        if (draw) {
+            playWithfriend.setAttribute("class", "playwithfriend");
+            resultForm.setAttribute("class", "result-form show");
+            winText.innerHTML = `Ничья!`;
+        }
     }
+
+
     player = player == "x" ? "o" : "x";
 
     if (player == "o") {
         players.setAttribute("class", "players active");
+    } else {
+        players.setAttribute("class", "players");
     }
-    else {
-        players.setAttribute("class", "players")
-    }
-    
-    
+
+
 }
 
 function checkWin(data) {
@@ -91,4 +106,10 @@ function checkWin(data) {
         }
     }
     return false;
+}
+
+function restart() {
+    for (i = 0; i < cells.length; i++) {
+        cells[i].innerHTML = '';
+    }
 }
