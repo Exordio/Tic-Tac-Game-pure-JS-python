@@ -108,38 +108,46 @@ body {
 }
 
 .field .details .players span{
-    color: #466eec;
     width: 100%;
     border-radius: 5px;
     padding: 7px 0;
     font-size: 19px;
     cursor: default;
     width: 100%;
-    text-align: center;
-    
+    text-align: center; 
     position: relative;
     z-index: 3;
-    
-}
-.field .details .players span:first-child{
-    color: #fff;
+    transition: all 0.3s ease;
 }
 
-
-.details .active{
-    color: #fff !important;
-}
 
 .details .slide{
     position: absolute;
     background: #466eec;
     top:0;
-    left:0;;
+    left:0;
     height: 100%;
     width: 50%;
     border-radius: 5px;
     z-index: 2;
 }
+
+
+.details span:first-child{
+    color: #fff;
+}
+
+.players.active span:first-child{
+    color: #466eec;
+}
+.players.active span:nth-child(2){
+    color: #fff;
+}
+
+.players.active .slide{
+    left: 50%;
+}
+
 
 .field .play-area{
     margin-top: 15px;
