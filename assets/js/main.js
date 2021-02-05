@@ -65,19 +65,21 @@ function cellClick() {
     data = [];
 
     if (!this.innerHTML) {
-        this.innerHTML = `<strong>${player}<\strong>`;
+        this.innerHTML = `<p>${player}</p>`;
     } else {
         alert("Занято");
         return;
     }
 
     for (i in cells) {
-        if (cells[i].innerHTML == player) {
+//        console.log(cells[i].innerHTML)
+        
+        if (cells[i].innerHTML == `<p>${player}</p>`) {
             data.push(parseInt(cells[i].getAttribute('pos')));
         }
     }
 
-//    console.log(data);
+    console.log(data);
 
     if (checkWin(data)) {
         board.setAttribute("class", "board");
@@ -125,7 +127,7 @@ function bot() {
         }
     }
     
-    console.log(arr)
+//    console.log(arr)
 }
 
 
