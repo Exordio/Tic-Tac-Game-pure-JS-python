@@ -83,12 +83,12 @@ body {
 }
 
 
-.playwithfriend {
+.board {
     display: none;
 
 }
 
-.playwithfriend.show {
+.board.show {
     display: block;
     transition: all 1s ease;
 }

@@ -1,7 +1,7 @@
 const selectForm = document.querySelector(".select"),
     selectOnepc = selectForm.querySelector(".onepc"),
     selectWithbot = selectForm.querySelector(".withbot"),
-    playWithfriend = document.querySelector(".playwithfriend"),
+    board = document.querySelector(".board"),
     players = document.querySelector(".players"),
 
     resultForm = document.querySelector(".result-form"),
@@ -29,17 +29,21 @@ winIndex = [
 window.onload = () => {
     selectOnepc.onclick = () => {
         selectForm.classList.add("hide");
-        playWithfriend.classList.add("show");
+        board.classList.add("show");
+    }
+    
+    board.onclick = () => {
+        selectForm.classList.add("hide");
     }
 
     selectRestart.onclick = () => {
         resultForm.classList.remove("show");
         restart();
-        playWithfriend.classList.add("show");
+        board.classList.add("show");
     }
 
     mainMenu.onclick = () => {
-        resultForm.setAttribute("class", "result-form");
+        resultForm.classList.remove("show");
         restart();
         selectForm.classList.remove("hide");
     }
@@ -67,12 +71,10 @@ function cellClick() {
         }
     }
 
-    
-    
     console.log(data);
 
     if (checkWin(data)) {
-        playWithfriend.setAttribute("class", "playwithfriend");
+        board.setAttribute("class", "board");
         resultForm.setAttribute("class", "result-form show");
         winText.innerHTML = `Игрок <p>${player.toUpperCase()}</p> выйграл в игре`;
         player = "x";
@@ -86,7 +88,7 @@ function cellClick() {
             }
         }
         if (draw) {
-            playWithfriend.setAttribute("class", "playwithfriend");
+            board.setAttribute("class", "board");
             resultForm.setAttribute("class", "result-form show");
             winText.innerHTML = `Ничья!`;
             player = "x";
