@@ -37,7 +37,7 @@ window.onload = () => {
         restart();
         playWithfriend.classList.add("show");
     }
-    
+
     mainMenu.onclick = () => {
         resultForm.setAttribute("class", "result-form");
         restart();
@@ -60,18 +60,23 @@ function cellClick() {
         alert("Занято");
         return;
     }
-
+    
     for (i in cells) {
         if (cells[i].innerHTML == player) {
             data.push(parseInt(cells[i].getAttribute('pos')));
         }
     }
+
+    
+    
     console.log(data);
 
     if (checkWin(data)) {
         playWithfriend.setAttribute("class", "playwithfriend");
         resultForm.setAttribute("class", "result-form show");
         winText.innerHTML = `Игрок <p>${player.toUpperCase()}</p> выйграл в игре`;
+        player = "x";
+        return;
 
     } else {
         draw = true;
@@ -84,17 +89,20 @@ function cellClick() {
             playWithfriend.setAttribute("class", "playwithfriend");
             resultForm.setAttribute("class", "result-form show");
             winText.innerHTML = `Ничья!`;
+            player = "x";
+            return;
         }
     }
-
-
+    
     player = player == "x" ? "o" : "x";
-
+    
     if (player == "o") {
         players.setAttribute("class", "players active");
     } else {
         players.setAttribute("class", "players");
     }
+
+    
 
 
 }
@@ -121,4 +129,9 @@ function restart() {
     for (i = 0; i < cells.length; i++) {
         cells[i].innerHTML = '';
     }
+}
+
+function sleep(ms) {
+    ms += new Date().getTime();
+    while (new Date() < ms) {}
 }
