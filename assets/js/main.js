@@ -147,29 +147,17 @@ function bot() {
     } else {
         players.setAttribute("class", "players");
     }
-    
-    if (checkWin(data_bot)) {
-        board.setAttribute("class", "board");
-        resultForm.setAttribute("class", "result-form show");
-        winText.innerHTML = `Вы проиграли боту, ну и ладно.`;
-        player = "x";
-        return;
-    }
 
-    /*setTimeout(() => {
-        to_delay_bot_checkwin();
-                     }, timeDelay)*/
+    setTimeout(() => {
+        if (checkWin(data_bot)) {
+            board.setAttribute("class", "board");
+            resultForm.setAttribute("class", "result-form show");
+            winText.innerHTML = `Вы проиграли боту<br>ну и ладно.`;
+            player = "x";
+            return;
+        }
+    }, 400)
 }
-
-/*function to_delay_bot_checkwin(data) {
-    if (checkWin(data)) {
-        board.setAttribute("class", "board");
-        resultForm.setAttribute("class", "result-form show");
-        winText.innerHTML = `Вы проиграли боту, ну и ладно.`;
-        player = "x";
-        return;
-    }
-}*/
 
 function checkWin(data) {
     for (i in winIndex) {
