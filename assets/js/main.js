@@ -9,3 +9,16 @@ for (var i = 1; i <= 9; i++){
     area.innerHTML += "<span class='square' pos=" + i + "></div>";
     
 }*/
+
+const selectForm = document.querySelector(".select"),
+      
+selectOnepc = selectForm.querySelector(".onepc"),
+selectWithbot = selectForm.querySelector(".withbot");
+playWithfriend = document.querySelector(".playwithfriend")
+
+window.onload = ()=>{
+    selectOnepc.onclick = ()=>{
+        selectForm.classList.add("hide");
+        playWithfriend.classList.add("show");
+    }
+}
