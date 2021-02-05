@@ -17,7 +17,8 @@ const selectForm = document.querySelector(".select"),
 cells = document.getElementsByClassName('cell');
 
 player = "x";
-bot_in_game = false
+bot_in_game = false;
+timeDelay = 300;
 
 winIndex = [
     [1, 2, 3],
@@ -34,6 +35,7 @@ window.onload = () => {
     selectOnepc.onclick = () => {
         selectForm.classList.add("hide");
         board.classList.add("show");
+        bot_in_game = false;
     }
 
     selectWithbot.onclick = () => {
@@ -63,6 +65,7 @@ for (i = 0; i < cells.length; i++) {
 
 function cellClick() {
     data = [];
+    data_bot = [];
 
     if (!this.innerHTML) {
         this.innerHTML = `<p>${player}</p>`;
@@ -72,14 +75,11 @@ function cellClick() {
     }
 
     for (i in cells) {
-//        console.log(cells[i].innerHTML)
-        
         if (cells[i].innerHTML == `<p>${player}</p>`) {
             data.push(parseInt(cells[i].getAttribute('pos')));
+            console.log(data);
         }
     }
-
-    console.log(data);
 
     if (checkWin(data)) {
         board.setAttribute("class", "board");
@@ -113,7 +113,9 @@ function cellClick() {
     }
 
     if (bot_in_game) {
-        bot()
+        setTimeout(() => {
+            bot();
+        }, timeDelay)
     }
 
 }
@@ -121,15 +123,53 @@ function cellClick() {
 function bot() {
     let arr = [];
     for (let i = 0; i < allBox.length; i++) {
-        if(allBox[i].childElementCount == 0){
+        if (allBox[i].childElementCount == 0) {
             arr.push(i);
-            console.log(i + " " + "has no child")
         }
     }
+    let rand = arr[Math.floor(Math.random() * arr.length)];
+    console.log(rand);
+
+    if (arr.length > 0) {
+        allBox[rand].innerHTML = `<p>${player}</p>`;
+    }
+
+    for (i in cells) {
+        if (cells[i].innerHTML == `<p>${player}</p>`) {
+            data_bot.push(parseInt(cells[i].getAttribute('pos')));
+            console.log(data_bot);
+        }
+    }
+
+    player = "x";
+    if (player == "o") {
+        players.setAttribute("class", "players active");
+    } else {
+        players.setAttribute("class", "players");
+    }
     
-//    console.log(arr)
+    if (checkWin(data_bot)) {
+        board.setAttribute("class", "board");
+        resultForm.setAttribute("class", "result-form show");
+        winText.innerHTML = `Вы проиграли боту, ну и ладно.`;
+        player = "x";
+        return;
+    }
+
+    /*setTimeout(() => {
+        to_delay_bot_checkwin();
+                     }, timeDelay)*/
 }
 
+/*function to_delay_bot_checkwin(data) {
+    if (checkWin(data)) {
+        board.setAttribute("class", "board");
+        resultForm.setAttribute("class", "result-form show");
+        winText.innerHTML = `Вы проиграли боту, ну и ладно.`;
+        player = "x";
+        return;
+    }
+}*/
 
 function checkWin(data) {
     for (i in winIndex) {
@@ -148,9 +188,6 @@ function checkWin(data) {
     }
     return false;
 }
-
-
-
 
 function restart() {
     for (i = 0; i < cells.length; i++) {
