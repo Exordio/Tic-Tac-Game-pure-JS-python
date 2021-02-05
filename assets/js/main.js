@@ -2,6 +2,9 @@ const selectForm = document.querySelector(".select"),
     selectOnepc = selectForm.querySelector(".onepc"),
     selectWithbot = selectForm.querySelector(".withbot"),
     board = document.querySelector(".board"),
+    allBox = document.querySelectorAll("section span"),
+
+
     players = document.querySelector(".players"),
 
     resultForm = document.querySelector(".result-form"),
@@ -9,11 +12,12 @@ const selectForm = document.querySelector(".select"),
     selectRestart = document.getElementById('restart'),
     mainMenu = document.getElementById('mainMenu');
 
+
+
 cells = document.getElementsByClassName('cell');
 
 player = "x";
-
-delayMSec = 1000;
+bot_in_game = false
 
 winIndex = [
     [1, 2, 3],
@@ -31,9 +35,11 @@ window.onload = () => {
         selectForm.classList.add("hide");
         board.classList.add("show");
     }
-    
-    board.onclick = () => {
+
+    selectWithbot.onclick = () => {
         selectForm.classList.add("hide");
+        board.classList.add("show");
+        bot_in_game = true;
     }
 
     selectRestart.onclick = () => {
@@ -59,19 +65,19 @@ function cellClick() {
     data = [];
 
     if (!this.innerHTML) {
-        this.innerHTML = player;
+        this.innerHTML = `<strong>${player}<\strong>`;
     } else {
         alert("Занято");
         return;
     }
-    
+
     for (i in cells) {
         if (cells[i].innerHTML == player) {
             data.push(parseInt(cells[i].getAttribute('pos')));
         }
     }
 
-    console.log(data);
+//    console.log(data);
 
     if (checkWin(data)) {
         board.setAttribute("class", "board");
@@ -95,19 +101,33 @@ function cellClick() {
             return;
         }
     }
-    
+
     player = player == "x" ? "o" : "x";
-    
+
     if (player == "o") {
         players.setAttribute("class", "players active");
     } else {
         players.setAttribute("class", "players");
     }
 
-    
-
+    if (bot_in_game) {
+        bot()
+    }
 
 }
+
+function bot() {
+    let arr = [];
+    for (let i = 0; i < allBox.length; i++) {
+        if(allBox[i].childElementCount == 0){
+            arr.push(i);
+            console.log(i + " " + "has no child")
+        }
+    }
+    
+    console.log(arr)
+}
+
 
 function checkWin(data) {
     for (i in winIndex) {
@@ -126,6 +146,9 @@ function checkWin(data) {
     }
     return false;
 }
+
+
+
 
 function restart() {
     for (i = 0; i < cells.length; i++) {
