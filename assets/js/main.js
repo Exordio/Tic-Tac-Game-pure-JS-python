@@ -56,7 +56,7 @@ ws.onmessage = ({
             players.setAttribute("class", "players");
         }
 
-        for (i in cells) {
+        for (var i in cells) {
             if (cells[i].innerHTML == `<p>x</p>`) {
                 game_log_x.push(parseInt(cells[i].getAttribute('pos')));
             }
@@ -158,13 +158,13 @@ function connect() {
     board.classList.add("show");
 }
 
-for (i = 0; i < cells.length; i++) {
+for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', cellClick, false);
 }
 
 function cellClick() {
-    data = [];
-    data_bot = [];
+    var data = [];
+    var data_bot = [];
 
     if (!this.innerHTML) {
         this.innerHTML = `<p>${player}</p>`;
@@ -184,7 +184,7 @@ function cellClick() {
     }
 
 
-    for (i in cells) {
+    for (var i in cells) {
         if (cells[i].innerHTML == `<p>${player}</p>`) {
             data.push(parseInt(cells[i].getAttribute('pos')));
         }
@@ -231,8 +231,8 @@ function cellClick() {
 }
 
 function bot() {
-    let arr = [];
-    for (let i = 0; i < boxSpans.length; i++) {
+    var arr = [];
+    for (var i = 0; i < boxSpans.length; i++) {
         if (boxSpans[i].childElementCount == 0) {
             arr.push(i);
         }
@@ -244,7 +244,7 @@ function bot() {
         boxSpans[rand].innerHTML = `<p>${player}</p>`;
     }
 
-    for (i in cells) {
+    for (var i in cells) {
         if (cells[i].innerHTML == `<p>${player}</p>`) {
             data_bot.push(parseInt(cells[i].getAttribute('pos')));
             console.log(data_bot);
@@ -270,7 +270,7 @@ function bot() {
 }
 
 function checkWin(data) {
-    for (i in winIndex) {
+    for (var i in winIndex) {
         win = true;
         for (j in winIndex[i]) {
             id = winIndex[i][j];
@@ -287,7 +287,7 @@ function checkWin(data) {
 }
 
 function restart() {
-    for (i = 0; i < cells.length; i++) {
+    for (var i = 0; i < cells.length; i++) {
         cells[i].innerHTML = '';
         players.setAttribute("class", "players");
     }
