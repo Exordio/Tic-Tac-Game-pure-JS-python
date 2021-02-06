@@ -36,6 +36,9 @@ $ \venv\Scripts\activate
 $ pip install websockets
 $ python websockets.py
 ```
+
+Than simple run index.html to check it
+
 ### Todos
  - Improve network code (Room-system)
  - Add locks between player moves
