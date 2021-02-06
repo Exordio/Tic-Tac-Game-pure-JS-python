@@ -232,7 +232,7 @@ function cellClick() {
 function bot() {
     var arr = [];
     var data_bot = [];
-    
+
     for (var i = 0; i < boxSpans.length; i++) {
         if (boxSpans[i].childElementCount == 0) {
             arr.push(i);
