@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: rgb(80, 138, 217);
+    background: linear-gradient(90deg, rgba(80, 138, 217, 1) 0%, rgba(70, 110, 236, 1) 62%, rgba(114, 101, 235, 1) 90%);
+    background-attachment: fixed;
+}
+
+.select,
+.field,
+.result-form,
+.form-room_select{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.select {
+    background: #fff;
+    padding: 20px 25px 25px;
+    border-radius: 6px;
+    max-width: 350px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.select.hide {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.select header {
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid skyblue;
+    border-image: linear-gradient(to right top, blue, skyblue, blue);
+    border-image-slice: 1;
+}
+
+.select .title {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.select .choises {
+    display: flex;
+    width: 100%
+}
+
+.buttons {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin: 5px;
+    padding: 10px 0;
+    border: 0;
+    outline: 0;
+    background: #466eec;
+    border-radius: 8px;   
+}
+
+.select .multiplayer {
+    display: flex;
+}
+
+.buttons:hover {
+    transform: scale(0.96);
+    transition: 0.5s;
+}
+
+.select .onepc {
+    margin-right: 7px;
+}
+
+.select .withbot {
+    margin-left: 7px;
+}
+
+.form-room_select header{
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid skyblue;
+    border-image: linear-gradient(to right top, blue, skyblue, blue);
+    border-image-slice: 1;
+}
+
+.form-room_select{
+    display: none;
+    background: #fff;
+    padding: 20px 25px 25px;
+    border-radius: 6px;
+    max-width: 350px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.form-room_select.show{
+    display: block;
+}
+
+.form-room_select .form_config_connect{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-room_select .form_config_connect input{
+    padding: 5px;
+    margin: 10px 0px;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+
+.board {
+    display: none;
+
+}
+
+.board.show {
+    display: block;
+    transition: all 1s ease;
+}
+
+
+
+.field .details {
+    background: #fff;
+    padding: 7px;
+    border-radius: 6px;
+}
+
+.field .details .players {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.field .details .players span {
+    width: 100%;
+    border-radius: 5px;
+    padding: 7px 0;
+    font-size: 19px;
+    cursor: default;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+
+.details .slide {
+    position: absolute;
+    background: #466eec;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+
+.details span:first-child {
+    color: #fff;
+}
+
+.players.active span:first-child {
+    color: #466eec;
+}
+
+.players.active span:nth-child(2) {
+    color: #fff;
+}
+
+.players.active .slide {
+    left: 50%;
+}
+
+
+.field .play-area {
+    margin-top: 15px;
+}
+
+
+.field section {
+    display: flex;
+}
+
+.field section span {
+    display: block;
+    margin: 2px;
+    height: 80px;
+    width: 80px;
+    background: #fff;
+    border-radius: 6px;
+
+    font-size: 45px;
+    text-align: center;
+    line-height: 76px;
+    color: #466eec;
+}
+
+.result-form {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    
+    
+}
+
+.result-form.show{
+    display: block;
+    
+}
+
+.result-form .winnertext {
+    display: flex;
+    font-size: 20px;
+    font-weight: 40;
+    padding: 0 0 20px;
+    justify-content: center;
+}
+
+.result-form .winnertext p {
+    font-weight: 600;
+    margin: 0 5px;
+}
+
+.result-form .btns {
+    display: flex;
+    justify-content: center;
+}
+
+.result-form .btns button {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    padding: 10px 0;
+    border: 0;
+    outline: 0;
+    background: #466eec;
+    border-radius: 8px;
+    margin: 0 3px;
+    padding: 2px;
+}
+
+.result-form .btns button:hover {
+    transform: scale(0.96);
+    transition: 0.5s;
+}
