@@ -164,7 +164,6 @@ for (let i = 0; i < cells.length; i++) {
 
 function cellClick() {
     var data = [];
-    var data_bot = [];
 
     if (!this.innerHTML) {
         this.innerHTML = `<p>${player}</p>`;
@@ -232,6 +231,8 @@ function cellClick() {
 
 function bot() {
     var arr = [];
+    var data_bot = [];
+    
     for (var i = 0; i < boxSpans.length; i++) {
         if (boxSpans[i].childElementCount == 0) {
             arr.push(i);
