@@ -2,6 +2,11 @@ const selectForm = document.querySelector(".select"),
     selectOnepc = selectForm.querySelector(".onepc"),
     selectWithbot = selectForm.querySelector(".withbot"),
 
+    diffForm = document.querySelector(".form-diff-bot"),
+
+    low_diff = document.querySelector(".low"),
+    high_diff = document.querySelector(".high"),
+
     selectMultiplayer = selectForm.querySelector(".multiplayer"),
 
     multiplayerSettings = document.querySelector(".form-room_select"),
@@ -109,11 +114,26 @@ window.onload = () => {
         bot_in_game = false;
     }
 
-    selectWithbot.onclick = () => {
+    selectWithbot.onclick = () => { //выбор игры с ботом
         selectForm.classList.add("hide");
+        diffForm.classList.add("show");
+
+    }
+
+    low_diff.onclick = () => {
+        diffForm.classList.remove("show");
         board_field.classList.add("show");
         bot_in_game = true;
+        minimax_check = false;
     }
+
+    high_diff.onclick = () => {
+        diffForm.classList.remove("show");
+        board_field.classList.add("show");
+        bot_in_game = true;
+        minimax_check = true;
+    }
+
 
     selectMultiplayer.onclick = () => {
         selectForm.classList.add("hide");
@@ -137,6 +157,7 @@ window.onload = () => {
         selectForm.classList.remove("hide");
         in_multiplauer = false;
         bot_in_game = false;
+        minimax_check = false;
     }
 
 }
@@ -224,34 +245,32 @@ function cellClick() {
 
     if (bot_in_game) {
         setTimeout(() => {
-            bot(true); //Включение бота, и минимакса
+            bot(minimax_check); //Включение бота, и минимакса
         }, timeDelay)
     }
 }
 
 
-minimax_check = false
-
-function bot(minimax_check) {
+function bot(hard_bot) {
     var arr = [];
     var data_bot = [];
 
-    if (minimax_check) {
+    if (hard_bot) {
 
         var originalBoard = get_the_board()
         var choise = minimax(originalBoard, "o")
         console.log(choise)
-        
+
         boxSpans[choise['index']].innerHTML = `<p>${player}</p>`;
-        
+
         for (var i in cells) {
             if (cells[i].innerHTML == `<p>${player}</p>`) {
                 data_bot.push(parseInt(cells[i].getAttribute('pos')));
                 console.log(data_bot);
             }
         }
-        
-        
+
+
         player = "x";
         if (player == "o") {
             players.setAttribute("class", "players active");
@@ -268,8 +287,8 @@ function bot(minimax_check) {
                 return;
             }
         }, timeDelay + 100)
-        
-        
+
+
 
     } else {
 
@@ -311,7 +330,7 @@ function bot(minimax_check) {
 
     }
 
-    //    minimax
+
 }
 
 function get_the_board() {
@@ -354,7 +373,7 @@ huPlayer = "x";
 aiPlayer = "o";
 
 function minimax(newBoard, player_minx) {
-    
+
     var availSpots = emptyIndex(newBoard);
 
     if (winning_for_minimax(newBoard, huPlayer)) {
