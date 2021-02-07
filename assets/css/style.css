@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
 body {
@@ -17,12 +18,13 @@ body {
 .field,
 .result-form,
 .form-room_select,
-.form-diff-bot{
+.form-diff-bot {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 
 .select {
     background: #fff;
@@ -33,7 +35,8 @@ body {
     transition: all 0.3s ease;
 }
 
-.select.hide {
+.select.hide,
+.past_games.hide {
     opacity: 0;
     pointer-events: none;
     transform: translate(-50%, -50%) scale(0.9);
@@ -46,9 +49,13 @@ body {
     border-bottom: 2px solid skyblue;
     border-image: linear-gradient(to right top, blue, skyblue, blue);
     border-image-slice: 1;
+    justify-content: center;
+    text-align: center;
 }
 
 .select .title {
+    justify-content: center;
+    text-align: center;
     font-size: 18px;
     font-weight: 500;
     margin: 15px 0;
@@ -59,22 +66,65 @@ body {
     width: 100%
 }
 
+
+.past_games {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: #fff;
+    padding: 20px 25px 25px;
+    border-radius: 6px;
+    max-width: 350px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.past_games header {
+    display: flex;
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid skyblue;
+    border-image: linear-gradient(to right, blue, purple);
+    border-image-slice: 1;
+    justify-content: center;
+}
+
+.past_games .content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center
+}
+
+.past_games .content .win_block {
+    padding: 5px 0;
+}
+
+
+
+
 .buttons {
     width: 100%;
     font-size: 16px;
     font-weight: 500;
     color: #fff;
-    margin: 5px;
+    margin: 5px 0;
     padding: 10px 0;
     border: 0;
     outline: 0;
     background: #466eec;
-    border-radius: 8px;   
+    border-radius: 8px;
 }
 
 .select .multiplayer {
     display: flex;
 }
+
+
 
 .buttons:hover {
     transform: scale(0.96);
@@ -92,7 +142,8 @@ body {
 
 
 
-.form-room_select header, .form-diff-bot header{
+.form-room_select header,
+.form-diff-bot header {
     font-size: 24px;
     font-weight: 600;
     padding-bottom: 10px;
@@ -101,7 +152,8 @@ body {
     border-image-slice: 1;
 }
 
-.form-room_select, .form-diff-bot{
+.form-room_select,
+.form-diff-bot {
     display: none;
     background: #fff;
     padding: 20px 25px 25px;
@@ -111,16 +163,19 @@ body {
     transition: all 0.3s ease;
 }
 
-.form-room_select.show, .form-diff-bot.show{
+
+
+.form-room_select.show,
+.form-diff-bot.show {
     display: block;
 }
 
-.form-room_select .form_config_connect{
+.form-room_select .form_config_connect {
     display: flex;
     flex-direction: column;
 }
 
-.form-room_select .form_config_connect input{
+.form-room_select .form_config_connect input {
     padding: 5px;
     margin: 10px 0px;
     border: 1px solid;
@@ -224,13 +279,13 @@ body {
     background: white;
     padding: 20px;
     border-radius: 5px;
-    
-    
+
+
 }
 
-.result-form.show{
+.result-form.show {
     display: block;
-    
+
 }
 
 .result-form .winnertext {
@@ -268,4 +323,14 @@ body {
 .result-form .btns button:hover {
     transform: scale(0.96);
     transition: 0.5s;
+}
+
+.win_block{
+    display: flex;
+}
+
+.win_block p{
+    padding-left: 5px;
+    color: skyblue;
+
 }
