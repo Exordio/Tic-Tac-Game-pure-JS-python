@@ -10,16 +10,58 @@
             "player_x": 5
         },
         {
+            "player_o": 4
+        },
+        {
+            "player_x": 9
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "x"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:03:00 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 1
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 7
+        },
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 2
+        },
+        {
+            "player_x": 8
+        },
+        {
             "player_o": 6
         },
         {
             "player_x": 9
         },
         {
-            "winner": "x"
+            "type_of_game": "With bot"
         },
         {
-            "time": "Sun Feb 07 2021 20:26:41 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+            "winner": "Draw"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:03:16 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
         },
         "log"
     ],
@@ -28,13 +70,103 @@
             "player_x": 3
         },
         {
-            "player_o": 2
+            "player_o": 5
         },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:03:25 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 1
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 6
+        },
+        {
+            "player_x": 3
+        },
+        {
+            "type_of_game": "1 X 1"
+        },
+        {
+            "winner": "x"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:03:35 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
         {
             "player_x": 1
         },
         {
             "player_o": 4
+        },
+        {
+            "player_x": 8
+        },
+        {
+            "player_o": 7
+        },
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 2
+        },
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 6
+        },
+        {
+            "player_x": 9
+        },
+        {
+            "type_of_game": "1 X 1"
+        },
+        {
+            "winner": "x"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:03:44 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
         },
         {
             "player_x": 5
@@ -46,10 +178,127 @@
             "player_x": 9
         },
         {
-            "winner": "x"
+            "player_o": 4
         },
         {
-            "time": "Sun Feb 07 2021 20:42:59 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+            "player_x": 3
+        },
+        {
+            "player_o": 7
+        },
+        {
+            "type_of_game": "1 X 1"
+        },
+        {
+            "winner": "o"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:03:53 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 6
+        },
+        {
+            "player_o": 4
+        },
+        {
+            "player_x": 7
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 8
+        },
+        {
+            "player_o": 2
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:05:43 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 1
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 7
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:05:47 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 8
+        },
+        {
+            "player_x": 6
+        },
+        {
+            "player_o": 4
+        },
+        {
+            "player_x": 7
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 9
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "Draw"
+        },
+        {
+            "time": "Sun Feb 07 2021 23:16:36 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
         },
         "log"
     ]

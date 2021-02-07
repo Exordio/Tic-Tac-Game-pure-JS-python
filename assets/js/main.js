@@ -63,30 +63,26 @@ ws.onmessage = ({
     //TODO LOG MULTIPLAYER
     game_log_x = [];
     game_log_o = [];
-
+    // Обработка логов с вебсокет сервера, загрузка истории
     try {
         if (JSON.parse(data)[0].slice(JSON.parse(data)[0].length - 1, JSON.parse(data)[0].length) == "log") {
-            //    console.log(data);
-            //    data_len = data.length
-            //    if(JSON.parse(data)[0].slice(data -1, data.length)
             var past_games_parse = JSON.parse(data).reverse();
-            //    console.log(past_games_parse);
-
             // Вывод последних 5 игр.
             for (let i = 0; i < 5; i++) {
                 try {
-                    let x = past_games_parse[i].slice(past_games_parse[i].length - 3, past_games_parse[i].length)
+                    let x = past_games_parse[i].slice(past_games_parse[i].length - 4, past_games_parse[i].length)
 
                     console.log(x);
-                    winner_f_log = x[0]['winner'];
-                    time_f_log = x[1]['time'].slice(0, 21);
+                    type_of_game = x[0]['type_of_game'];
+                    winner_f_log = x[1]['winner'];
+                    time_f_log = x[2]['time'].slice(15, 21);
 
-                    if (winner_f_log != "draw") {
-                        past_games_content.innerHTML += `<div class="win_block">${time_f_log} Победил : <p> ${winner_f_log.toUpperCase()}</p><div>`
+                    if (winner_f_log != "Draw") {
+                        past_games_content.innerHTML += `<div class="win_block">[ ${time_f_log} ] [ ${type_of_game} ] Победил : <p> ${winner_f_log.toUpperCase()}</p><div>`
                     } else {
-                        
+                        past_games_content.innerHTML += `<div class="win_block">[ ${time_f_log} ] [ ${type_of_game} ] Ничья <div>`
                     }
-                    
+
                 } catch {
                     //                console.log('')
                 }
@@ -207,11 +203,6 @@ window.onload = () => {
         past_games.classList.remove("hide");
         restart();
         selectForm.classList.remove("hide");
-        //        in_multiplauer = false;
-        //        bot_in_game = false;
-        //        minimax_check = false;
-        //        log = [];
-        //        swith_log = false;
         location.reload();
 
     }
@@ -244,10 +235,9 @@ swith_log = false;
 function cellClick() {
     var data = [];
 
-
     if (!this.innerHTML) {
         this.innerHTML = `<p>${player}</p>`;
-        if (in_multiplauer == false) { //&& (bot_in_game == false)) {
+        if (in_multiplauer == false) { 
             logging(parseInt(this.getAttribute('pos')))
         }
 
@@ -273,20 +263,40 @@ function cellClick() {
 
     if (in_multiplauer == false) {
         if (checkWin(data)) {
-            board_field.setAttribute("class", "board");
-            resultForm.setAttribute("class", "result-form show");
-            winText.innerHTML = `Игрок <p>${player.toUpperCase()}</p> выйграл в игре`;
-            log.push({
-                //'log': 'True',
-                winner: player
+            if (bot_in_game) {
+                board_field.setAttribute("class", "board");
+                resultForm.setAttribute("class", "result-form show");
+                winText.innerHTML = `Игрок <p>${player.toUpperCase()}</p> выйграл в игре`;
 
-            }, {
-                time: Date(Date.now()).toString()
-            }, "log");
-            console.log(log);
-            pushlog(log); // Отправка лога на websocket server
-            player = "x";
-            return;
+                log.push({
+                    type_of_game: "With bot"
+                }, {
+                    winner: player
+                }, {
+                    time: Date(Date.now()).toString()
+                }, "log");
+                console.log(log);
+                pushlog(log); // Отправка лога на websocket server
+                player = "x";
+                return;
+            } else {
+
+                board_field.setAttribute("class", "board");
+                resultForm.setAttribute("class", "result-form show");
+                winText.innerHTML = `Игрок <p>${player.toUpperCase()}</p> выйграл в игре`;
+
+                log.push({
+                    type_of_game: "1 X 1"
+                }, {
+                    winner: player
+                }, {
+                    time: Date(Date.now()).toString()
+                }, "log");
+                console.log(log);
+                pushlog(log); // Отправка лога на websocket server
+                player = "x";
+                return;
+            }
 
         } else {
             draw = true;
@@ -295,14 +305,36 @@ function cellClick() {
                     draw = false;
                 }
             }
-            if (draw) {
+            if (draw && !bot_in_game) {
                 board_field.setAttribute("class", "board");
                 resultForm.setAttribute("class", "result-form show");
                 winText.innerHTML = `Ничья!`;
                 log.push({
-                    winner: "Draw"
-                })
+                        type_of_game: "1 X 1"
+                    }, {
+                        winner: "Draw"
+                    }, {
+                        time: Date(Date.now()).toString()
+                    },
+                    "log");
                 console.log(log);
+                pushlog(log);
+                player = "x";
+                return;
+            } else if (draw && bot_in_game) {
+                board_field.setAttribute("class", "board");
+                resultForm.setAttribute("class", "result-form show");
+                winText.innerHTML = `Ничья!`;
+                log.push({
+                        type_of_game: "With bot"
+                    }, {
+                        winner: "Draw"
+                    }, {
+                        time: Date(Date.now()).toString()
+                    },
+                    "log");
+                console.log(log);
+                pushlog(log);
                 player = "x";
                 return;
             }
@@ -388,12 +420,16 @@ function bot(hard_bot) {
                 board_field.setAttribute("class", "board");
                 resultForm.setAttribute("class", "result-form show");
                 winText.innerHTML = `Вы проиграли боту<br>ну и ладно.`;
-                player = "x";
                 log.push({
+                    type_of_game: "With bot"
+                }, {
                     winner: "bot"
-                })
-
-                console.log(log)
+                }, {
+                    time: Date(Date.now()).toString()
+                }, "log");
+                console.log(log);
+                pushlog(log);
+                player = "x";
                 return;
             }
         }, timeDelay + 100)
@@ -406,7 +442,6 @@ function bot(hard_bot) {
             }
         }
         let rand = arr[Math.floor(Math.random() * arr.length)];
-        //        console.log(rand);
 
         bot_logging(rand);
 
@@ -417,7 +452,6 @@ function bot(hard_bot) {
         for (var i in cells) {
             if (cells[i].innerHTML == `<p>${player}</p>`) {
                 data_bot.push(parseInt(cells[i].getAttribute('pos')));
-                //                console.log(data_bot);
             }
         }
 
@@ -433,11 +467,16 @@ function bot(hard_bot) {
                 board_field.setAttribute("class", "board");
                 resultForm.setAttribute("class", "result-form show");
                 winText.innerHTML = `Вы проиграли боту<br>ну и ладно.`;
-                log.push({
-                    winner: "bot"
-                })
                 console.log(log);
-
+                log.push({
+                    type_of_game: "With bot"
+                }, {
+                    winner: "bot"
+                }, {
+                    time: Date(Date.now()).toString()
+                }, "log");
+                console.log(log);
+                pushlog(log);
                 player = "x";
                 return;
             }

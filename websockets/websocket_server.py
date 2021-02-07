@@ -2,7 +2,6 @@ import asyncio
 import websockets
 import json
 import os
-from datetime import datetime
 
 USERS = set()
 
@@ -40,7 +39,6 @@ async def unregister(websocket):
 # TODO По хорошему нужно написать алгоритм марсшрутизиции между комнатами в игре.
 
 async def repulse(websocket, path):
-    # asyncio.get_event_loop().create_task(history(websocket))
     try:
         await register(websocket)
         while True:
@@ -58,7 +56,6 @@ async def repulse(websocket, path):
 
             if ('log' in data):
                 print(data)
-                # print(history)
                 history.append(data)
                 to_file = history
                 with open('data.json', 'w', encoding='utf-8') as f:
