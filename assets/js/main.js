@@ -8,7 +8,7 @@ const selectForm = document.querySelector(".select"),
 
     connectBtn = document.querySelector(".connect"),
 
-    board = document.querySelector(".board"),
+    board_field = document.querySelector(".board"),
     boxSpans = document.querySelectorAll("section span"),
 
     players = document.querySelector(".players"),
@@ -69,7 +69,7 @@ ws.onmessage = ({
         console.log(game_log_o)
 
         if (checkWin(game_log_x)) {
-            board.setAttribute("class", "board");
+            board_field.setAttribute("class", "board");
             resultForm.setAttribute("class", "result-form show");
             players.setAttribute("class", "players");
             winText.innerHTML = `Игрок <p>x</p> выйграл в игре`;
@@ -79,7 +79,7 @@ ws.onmessage = ({
             }))
             return;
         } else if (checkWin(game_log_o)) {
-            board.setAttribute("class", "board");
+            board_field.setAttribute("class", "board");
             resultForm.setAttribute("class", "result-form show");
             players.setAttribute("class", "players");
             winText.innerHTML = `Игрок <p>o</p> выйграл в игре`;
@@ -89,7 +89,7 @@ ws.onmessage = ({
             }))
             return;
         } else if (game_log_x.length + game_log_o.length >= 9) {
-            board.setAttribute("class", "board");
+            board_field.setAttribute("class", "board");
             resultForm.setAttribute("class", "result-form show");
             players.setAttribute("class", "players");
             winText.innerHTML = `Ничья ! `;
@@ -105,13 +105,13 @@ ws.onmessage = ({
 window.onload = () => {
     selectOnepc.onclick = () => {
         selectForm.classList.add("hide");
-        board.classList.add("show");
+        board_field.classList.add("show");
         bot_in_game = false;
     }
 
     selectWithbot.onclick = () => {
         selectForm.classList.add("hide");
-        board.classList.add("show");
+        board_field.classList.add("show");
         bot_in_game = true;
     }
 
@@ -128,7 +128,7 @@ window.onload = () => {
     selectRestart.onclick = () => {
         resultForm.classList.remove("show");
         restart();
-        board.classList.add("show");
+        board_field.classList.add("show");
     }
 
     mainMenu.onclick = () => {
@@ -155,7 +155,7 @@ function connect() {
     }));
 
     multiplayerSettings.classList.remove("show");
-    board.classList.add("show");
+    board_field.classList.add("show");
 }
 
 for (let i = 0; i < cells.length; i++) {
@@ -191,7 +191,7 @@ function cellClick() {
 
     if (in_multiplauer == false) {
         if (checkWin(data)) {
-            board.setAttribute("class", "board");
+            board_field.setAttribute("class", "board");
             resultForm.setAttribute("class", "result-form show");
             winText.innerHTML = `Игрок <p>${player.toUpperCase()}</p> выйграл в игре`;
             player = "x";
@@ -205,7 +205,7 @@ function cellClick() {
                 }
             }
             if (draw) {
-                board.setAttribute("class", "board");
+                board_field.setAttribute("class", "board");
                 resultForm.setAttribute("class", "result-form show");
                 winText.innerHTML = `Ничья!`;
                 player = "x";
@@ -224,51 +224,196 @@ function cellClick() {
 
     if (bot_in_game) {
         setTimeout(() => {
-            bot();
+            bot(true); //Включение бота, и минимакса
         }, timeDelay)
     }
 }
 
-function bot() {
+
+minimax_check = false
+
+function bot(minimax_check) {
     var arr = [];
     var data_bot = [];
 
-    for (var i = 0; i < boxSpans.length; i++) {
-        if (boxSpans[i].childElementCount == 0) {
-            arr.push(i);
+    if (minimax_check) {
+
+        var originalBoard = get_the_board()
+        var choise = minimax(originalBoard, "o")
+        console.log(choise)
+        
+        boxSpans[choise['index']].innerHTML = `<p>${player}</p>`;
+        
+        for (var i in cells) {
+            if (cells[i].innerHTML == `<p>${player}</p>`) {
+                data_bot.push(parseInt(cells[i].getAttribute('pos')));
+                console.log(data_bot);
+            }
         }
-    }
-    let rand = arr[Math.floor(Math.random() * arr.length)];
-    console.log(rand);
-
-    if (arr.length > 0) {
-        boxSpans[rand].innerHTML = `<p>${player}</p>`;
-    }
-
-    for (var i in cells) {
-        if (cells[i].innerHTML == `<p>${player}</p>`) {
-            data_bot.push(parseInt(cells[i].getAttribute('pos')));
-            console.log(data_bot);
+        
+        
+        player = "x";
+        if (player == "o") {
+            players.setAttribute("class", "players active");
+        } else {
+            players.setAttribute("class", "players");
         }
-    }
 
-    player = "x";
-    if (player == "o") {
-        players.setAttribute("class", "players active");
+        setTimeout(() => {
+            if (checkWin(data_bot)) {
+                board_field.setAttribute("class", "board");
+                resultForm.setAttribute("class", "result-form show");
+                winText.innerHTML = `Вы проиграли боту<br>ну и ладно.`;
+                player = "x";
+                return;
+            }
+        }, timeDelay + 100)
+        
+        
+
     } else {
-        players.setAttribute("class", "players");
+
+        for (var i = 0; i < boxSpans.length; i++) {
+            if (boxSpans[i].childElementCount == 0) {
+                arr.push(i);
+            }
+        }
+        let rand = arr[Math.floor(Math.random() * arr.length)];
+        console.log(rand);
+
+        if (arr.length > 0) {
+            boxSpans[rand].innerHTML = `<p>${player}</p>`;
+        }
+
+        for (var i in cells) {
+            if (cells[i].innerHTML == `<p>${player}</p>`) {
+                data_bot.push(parseInt(cells[i].getAttribute('pos')));
+                console.log(data_bot);
+            }
+        }
+
+        player = "x";
+        if (player == "o") {
+            players.setAttribute("class", "players active");
+        } else {
+            players.setAttribute("class", "players");
+        }
+
+        setTimeout(() => {
+            if (checkWin(data_bot)) {
+                board_field.setAttribute("class", "board");
+                resultForm.setAttribute("class", "result-form show");
+                winText.innerHTML = `Вы проиграли боту<br>ну и ладно.`;
+                player = "x";
+                return;
+            }
+        }, timeDelay + 100)
+
     }
 
-    setTimeout(() => {
-        if (checkWin(data_bot)) {
-            board.setAttribute("class", "board");
-            resultForm.setAttribute("class", "result-form show");
-            winText.innerHTML = `Вы проиграли боту<br>ну и ладно.`;
-            player = "x";
-            return;
-        }
-    }, timeDelay + 100)
+    //    minimax
 }
+
+function get_the_board() {
+    var board = [];
+    for (var i = 0; i < boxSpans.length; i++) {
+        if (boxSpans[i].textContent == '') {
+            board.push(i)
+        } else {
+            board.push(boxSpans[i].textContent);
+        }
+    }
+
+    console.log(board);
+    return board;
+}
+
+function emptyIndex(board) {
+    return board.filter(s => s != "o" && s != "x");
+}
+
+
+function winning_for_minimax(board, player_minx) {
+    if (
+        (board[0] == player_minx && board[1] == player_minx && board[2] == player_minx) ||
+        (board[3] == player_minx && board[4] == player_minx && board[5] == player_minx) ||
+        (board[6] == player_minx && board[7] == player_minx && board[8] == player_minx) ||
+        (board[0] == player_minx && board[3] == player_minx && board[6] == player_minx) ||
+        (board[1] == player_minx && board[4] == player_minx && board[7] == player_minx) ||
+        (board[2] == player_minx && board[5] == player_minx && board[8] == player_minx) ||
+        (board[0] == player_minx && board[4] == player_minx && board[8] == player_minx) ||
+        (board[2] == player_minx && board[4] == player_minx && board[6] == player_minx)
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+huPlayer = "x";
+aiPlayer = "o";
+
+function minimax(newBoard, player_minx) {
+    
+    var availSpots = emptyIndex(newBoard);
+
+    if (winning_for_minimax(newBoard, huPlayer)) {
+        return {
+            score: -10
+        };
+    } else if (winning_for_minimax(newBoard, aiPlayer)) {
+        return {
+            score: 10
+        };
+    } else if (availSpots.length === 0) {
+        return {
+            score: 0
+        };
+    }
+
+
+    var moves = [];
+
+    for (var i = 0; i < availSpots.length; i++) {
+
+        var move = {};
+        move.index = newBoard[availSpots[i]];
+
+        newBoard[availSpots[i]] = player_minx;
+        if (player_minx == aiPlayer) {
+            var result = minimax(newBoard, huPlayer);
+            move.score = result.score;
+        } else {
+            var result = minimax(newBoard, aiPlayer);
+            move.score = result.score;
+        }
+        newBoard[availSpots[i]] = move.index;
+
+        moves.push(move);
+    }
+
+    var bestMove;
+    if (player_minx === aiPlayer) {
+        var bestScore = -10000;
+        for (var i = 0; i < moves.length; i++) {
+            if (moves[i].score > bestScore) {
+                bestScore = moves[i].score;
+                bestMove = i;
+            }
+        }
+    } else {
+
+        var bestScore = 10000;
+        for (var i = 0; i < moves.length; i++) {
+            if (moves[i].score < bestScore) {
+                bestScore = moves[i].score;
+                bestMove = i;
+            }
+        }
+    }
+    return moves[bestMove];
+}
+
 
 function checkWin(data) {
     for (var i in winIndex) {

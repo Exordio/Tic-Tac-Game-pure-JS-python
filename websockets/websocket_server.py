@@ -22,7 +22,6 @@ async def unregister(websocket):
 
 
 turns_in_room = []
-
 # Примитивный метод, репульс пакета от клиента другим клиентам.
 # TODO По хорошему нужно написать алгоритм марсшрутизиции между комнатами в игре.
 async def repulse(websocket, path):
