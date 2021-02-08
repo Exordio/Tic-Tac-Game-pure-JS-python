@@ -1,4 +1,5 @@
 const selectForm = document.querySelector(".select"),
+
     selectOnepc = selectForm.querySelector(".onepc"),
     selectWithbot = selectForm.querySelector(".withbot"),
 
@@ -23,7 +24,8 @@ const selectForm = document.querySelector(".select"),
     resultForm = document.querySelector(".result-form"),
     winText = document.querySelector(".winnertext"),
     selectRestart = document.getElementById('restart'),
-    mainMenu = document.getElementById('mainMenu');
+    mainMenu = document.getElementById('mainMenu'),
+    playerName = document.getElementById('input_nickname_mainmenu');
 
 
 
@@ -34,7 +36,8 @@ player = "x";
 bot_in_game = false;
 in_multiplauer = false;
 timeDelay = 300;
-log = []
+log = [];
+multiplayer_log = [];
 
 
 const winIndex = [
@@ -70,21 +73,33 @@ ws.onmessage = ({
             // Вывод последних 5 игр.
             for (let i = 0; i < 5; i++) {
                 try {
-                    let x = past_games_parse[i].slice(past_games_parse[i].length - 4, past_games_parse[i].length)
+                    let x = past_games_parse[i].slice(past_games_parse[i].length - 5, past_games_parse[i].length)
 
                     console.log(x);
-                    type_of_game = x[0]['type_of_game'];
-                    winner_f_log = x[1]['winner'];
-                    time_f_log = x[2]['time'].slice(15, 21);
+                    if (x[1]["type_of_game"] == "1 X 1") {
+                        type_of_game = x[1]['type_of_game'];
+                        winner_f_log = x[2]['winner'];
+                        time_f_log = x[3]['time'].slice(15, 21);
 
-                    if (winner_f_log != "Draw") {
-                        past_games_content.innerHTML += `<div class="win_block">[ ${time_f_log} ] [ ${type_of_game} ] Победил : <p> ${winner_f_log.toUpperCase()}</p><div>`
-                    } else {
-                        past_games_content.innerHTML += `<div class="win_block">[ ${time_f_log} ] [ ${type_of_game} ] Ничья <div>`
+                        if (winner_f_log != "Draw") {
+                            past_games_content.innerHTML += `<div class="win_block">${time_f_log} ${type_of_game} Победил : <p>${winner_f_log.toUpperCase()}</p><div>`
+                        } else {
+                            past_games_content.innerHTML += `<div class="win_block"> ${time_f_log} ${type_of_game} Ничья <div>`
+                        }
+                    } else if (x[1]["type_of_game"] == "With bot") {
+                        player_name = x[0]['player_name'];
+                        type_of_game = x[1]['type_of_game'];
+                        winner_f_log = x[2]['winner'];
+                        time_f_log = x[3]['time'].slice(15, 21);
+
+                        if (winner_f_log != "Draw") {
+                            past_games_content.innerHTML += `<div class="win_block"> ${time_f_log} ${player_name} VS Bot <p>Победил : ${winner_f_log}</p><div>`
+                        } else {
+                            past_games_content.innerHTML += `<div class="win_block"> ${time_f_log} ${player_name} VS Bot Ничья <div>`
+                        }
                     }
 
                 } catch {
-                    //                console.log('')
                 }
             }
 
@@ -114,13 +129,15 @@ ws.onmessage = ({
 
         console.log(game_log_x)
         console.log(game_log_o)
+        
+        
 
         if (checkWin(game_log_x)) {
             board_field.setAttribute("class", "board");
             resultForm.setAttribute("class", "result-form show");
             players.setAttribute("class", "players");
             winText.innerHTML = `Игрок <p>x</p> выйграл в игре`;
-            player = "x";
+            
             ws.send(JSON.stringify({
                 "clear": "+"
             }))
@@ -131,6 +148,7 @@ ws.onmessage = ({
             players.setAttribute("class", "players");
             winText.innerHTML = `Игрок <p>o</p> выйграл в игре`;
             player = "x";
+            
             ws.send(JSON.stringify({
                 "clear": "+"
             }))
@@ -141,6 +159,7 @@ ws.onmessage = ({
             players.setAttribute("class", "players");
             winText.innerHTML = `Ничья ! `;
             player = "x";
+            
             ws.send(JSON.stringify({
                 "clear": "+"
             }))
@@ -217,8 +236,8 @@ function connect() {
     console.log(username + " " + roomName);
 
     ws.send(JSON.stringify({
-        'username': username,
-        'roomName': roomName
+        username: username,
+        roomName: roomName
         //        'my_socket_id': my_socket
     }));
 
@@ -237,7 +256,7 @@ function cellClick() {
 
     if (!this.innerHTML) {
         this.innerHTML = `<p>${player}</p>`;
-        if (in_multiplauer == false) { 
+        if (in_multiplauer == false) {
             logging(parseInt(this.getAttribute('pos')))
         }
 
@@ -269,9 +288,11 @@ function cellClick() {
                 winText.innerHTML = `Игрок <p>${player.toUpperCase()}</p> выйграл в игре`;
 
                 log.push({
+                    player_name: playerName.value
+                }, {
                     type_of_game: "With bot"
                 }, {
-                    winner: player
+                    winner: playerName.value
                 }, {
                     time: Date(Date.now()).toString()
                 }, "log");
@@ -326,6 +347,8 @@ function cellClick() {
                 resultForm.setAttribute("class", "result-form show");
                 winText.innerHTML = `Ничья!`;
                 log.push({
+                        player_name: playerName.value
+                    }, {
                         type_of_game: "With bot"
                     }, {
                         winner: "Draw"
@@ -421,6 +444,8 @@ function bot(hard_bot) {
                 resultForm.setAttribute("class", "result-form show");
                 winText.innerHTML = `Вы проиграли боту<br>ну и ладно.`;
                 log.push({
+                    player_name: playerName.value
+                }, {
                     type_of_game: "With bot"
                 }, {
                     winner: "bot"
@@ -469,6 +494,8 @@ function bot(hard_bot) {
                 winText.innerHTML = `Вы проиграли боту<br>ну и ладно.`;
                 console.log(log);
                 log.push({
+                    player_name: playerName.value
+                }, {
                     type_of_game: "With bot"
                 }, {
                     winner: "bot"
