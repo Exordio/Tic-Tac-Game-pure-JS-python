@@ -721,5 +721,566 @@
             "time": "Mon Feb 08 2021 02:42:18 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
         },
         "log"
+    ],
+    [
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 8
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 6
+        },
+        {
+            "player_o": 7
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:25:46 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 1
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 8
+        },
+        {
+            "player_o": 4
+        },
+        {
+            "player_x": 7
+        },
+        {
+            "player_o": 6
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:28:15 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 1
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 8
+        },
+        {
+            "player_o": 4
+        },
+        {
+            "player_x": 9
+        },
+        {
+            "player_o": 6
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:29:09 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:29:58 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 6
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:31:00 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:31:59 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "XYZ"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:31:59 GMT+0300 (\u00d0\u009c\u00d0\u00be\u00d1\u0081\u00d0\u00ba\u00d0\u00b2\u00d0\u00b0, \u00d1\u0081\u00d1\u0082\u00d0\u00b0\u00d0\u00bd\u00d0\u00b4\u00d0\u00b0\u00d1\u0080\u00d1\u0082\u00d0\u00bd\u00d0\u00be\u00d0\u00b5 \u00d0\u00b2\u00d1\u0080\u00d0\u00b5\u00d0\u00bc\u00d1\u008f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:31:59 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 5
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "player_name": "sadfadasdasdasd"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "XYZ"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:31:59 GMT+0300 (\u00d0\u009c\u00d0\u00be\u00d1\u0081\u00d0\u00ba\u00d0\u00b2\u00d0\u00b0, \u00d1\u0081\u00d1\u0082\u00d0\u00b0\u00d0\u00bd\u00d0\u00b4\u00d0\u00b0\u00d1\u0080\u00d1\u0082\u00d0\u00bd\u00d0\u00be\u00d0\u00b5 \u00d0\u00b2\u00d1\u0080\u00d0\u00b5\u00d0\u00bc\u00d1\u008f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 8
+        },
+        {
+            "player_x": 7
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 6
+        },
+        {
+            "player_o": 4
+        },
+        {
+            "player_x": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "Draw"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:43:44 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 6
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 8
+        },
+        {
+            "player_x": 7
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "Draw"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:43:50 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 6
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 4
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 8
+        },
+        {
+            "player_x": 1
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "player_x": 7
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "Draw"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:43:57 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 6
+        },
+        {
+            "player_x": 7
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:44:03 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 6
+        },
+        {
+            "player_x": 2
+        },
+        {
+            "player_o": 8
+        },
+        {
+            "player_x": 3
+        },
+        {
+            "player_o": 7
+        },
+        {
+            "player_x": 9
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "Draw"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:48:52 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
+    ],
+    [
+        {
+            "player_x": 5
+        },
+        {
+            "player_o": 1
+        },
+        {
+            "player_x": 4
+        },
+        {
+            "player_o": 6
+        },
+        {
+            "player_x": 7
+        },
+        {
+            "player_o": 3
+        },
+        {
+            "player_x": 8
+        },
+        {
+            "player_o": 2
+        },
+        {
+            "player_name": "Exord"
+        },
+        {
+            "type_of_game": "With bot"
+        },
+        {
+            "winner": "bot"
+        },
+        {
+            "time": "Fri Mar 05 2021 19:48:58 GMT+0300 (\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f)"
+        },
+        "log"
     ]
 ]
